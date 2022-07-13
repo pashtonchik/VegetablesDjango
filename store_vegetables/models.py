@@ -34,6 +34,7 @@ class OrderList(models.Model):
     is_paid = models.BooleanField(default=False, verbose_name='Оплата совершена')
     registration_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
     edit_date = models.DateTimeField(auto_now=True, verbose_name='Дата изменения')
+    comment = models.CharField(max_length=2000, blank=True, verbose_name='Комментарий')
 
     def __str__(self):
         return f'Заказ №{self.id}'
