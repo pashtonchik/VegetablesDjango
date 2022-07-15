@@ -37,9 +37,8 @@ class CustomersViewSet(viewsets.ModelViewSet):
 
 @api_view(['POST'])
 def add_order(request):
-    order_info = json.loads(request.body.decode("utf-8"))
-    current_customer = Customer.objects.get(telegram_id=order_info['customer_tg_id'])
-    print(current_customer)
+    order_info = json.dumps(request.body.decode("utf-8"))
+    current_customer = Customer.objects.get(telegram_id=int(order_info['customer_tg_id']))
     order = OrderList(
         customer=current_customer,
         shipping_address=order_info['shipping_address'],
